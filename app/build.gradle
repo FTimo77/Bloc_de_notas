@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Dependencia para MySQL
+    implementation 'mysql:mysql-connector-java:8.0.31'
+    
+    // Dependencia para pruebas
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+
+    // Otra dependencia que podrías tener
+    implementation libs.guava
+}
+
+application {
+    // Define la clase principal de la aplicación
+    mainClass = 'org.example.App'
+}
+
+// Usar JUnit Platform para pruebas
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Aplicar un toolchain de Java para especificar la versión
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8) // Cambia a 8 o la versión que necesites
+    }
+}
